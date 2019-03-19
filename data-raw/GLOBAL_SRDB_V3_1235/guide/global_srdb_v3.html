@@ -1,0 +1,647 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us"><head>
+<meta name="docSource" content="guide document">
+<meta name="project" content="SOIL COLLECTIONS ">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/guide.css">
+<title>A Global Database of Soil Respiration Data, Version 3.0</title>
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<style type="text/css">
+.style1 {
+	margin-right: 55px;
+}
+</style>
+</head>
+<body>
+<div id="guidebox">
+<!--#include virtual="/guide_header.shtml" --><div class="pagetitle"> 
+		A Global Database of Soil Respiration Data, Version 3.0<br>
+<a class="button" href="/cgi-bin/dsviewer.pl?ds_id=1235" target="_blank">
+		Get Data</a>
+</div>
+<div id="contentbox">
+	<br><br>
+	
+	
+	<h2>Summary</h2>
+<p class="I1">This data set provides an update of the soil respiration database 
+(SRDB), a near-universal compendium of published soil respiration (RS) data. 
+Soil respiration, the flux of autotrophically- and heterotrophically-generated 
+CO2 from the soil to the atmosphere, remains the least well-constrained 
+component of the terrestrial Carbon cycle. The database encompasses all 
+published studies that report at least one of the following data measured in the 
+field (not laboratory): annual RS, mean seasonal RS, a seasonal or annual 
+partitioning of RS into its sources fluxes, RS temperature response (Q10), or RS 
+at 10 degrees C. The SRDB's orientation is thus to seasonal and annual fluxes, 
+not shorter-term or chamber-specific measurements, and the database is dominated 
+by temperate, well-drained forest measurement locations. The data set includes a 
+file of RS data and a linked file of study bibliographic data; both files are in 
+comma-separated format.</p>
+<p class="I1">
+<img alt="SRDB map" height="335" src="SRDB_V3_Figure1.png" width="750">&nbsp;</p>
+<p class="I1">Figure 1. Locations of 5173 SRDB database observations, colored by biome. Map produced by the 
+companion srdb.R script.</p>
+
+<p class="I1"><strong>Data and Documentation Access:</strong></p>
+<p class="I1"><strong>Get Data: </strong>
+<a href="/cgi-bin/dsviewer.pl?ds_id=1235">http://daac.ornl.gov/cgi-bin/dsviewer.pl?ds_id=1235</a></p>
+<p class="I1"><strong>Companion Files:</strong></p>
+
+<p class="I1"><strong>&nbsp;&nbsp; •	srdb.R</strong>: An R-language script containing functions for error-checking and mapping of study locations.</p>
+
+<p class="I1"><strong>&nbsp;&nbsp; •	calculations_worksheets_v3.zip</strong>: A collection of Excel spreadsheets recording the calculation of annual flux for each included study. </p>
+
+<p class="I1"><strong>Related Data Set:</strong></p>
+<p class="I1">Raich, J. W., and W. H. Schlesinger. 2001. Global Annual Soil Respiration Data (Raich and Schlesinger 1992). Data set.
+ Available on-line [http://daac.ornl.gov] from Oak Ridge National Laboratory Distributed Active Archive Center, Oak Ridge, Tennessee, U.S.A. 
+<a href="http://dx.doi.org/10.3334/ORNLDAAC/622">doi:10.3334/ORNLDAAC/622</a></p>
+
+<h2>Data Citation: </h2>
+<p class="I1"><strong>Cite this data set as follows:</strong></p>
+<p class="I1">Bond-Lamberty, B.P. and A.M. Thomson.
+2014. A Global Database of Soil Respiration Data, Version 3.0.&nbsp;Data set. 
+Available on-line [http://daac.ornl.gov] from Oak Ridge National Laboratory Distributed Active Archive Center,
+Oak Ridge, Tennessee, USA. <a href="http://dx.doi.org/10.3334/ORNLDAAC/1235">http://dx.doi.org/10.3334/ORNLDAAC/1235</a></p>
+
+<h2>Table of Contents:</h2>
+<ul>
+<li><a href="#HDataSetOverview">1 Data Set Overview</a></li>
+<li><a href="#datacharact">2 Data Characteristics</a></li>
+<li><a href="#appderivation">3 Applications and
+Derivation</a></li>
+<li><a href="#qualityassess">4 Quality Assessment</a></li>
+<li><a href="#HAcqMatMethods">5 Acquisition
+Materials and Methods</a></li>
+<li><a href="#HDataDescrAccess">6 Data Access</a></li>
+<li><a href="#references">7 References </a></li>
+</ul>
+
+<a name="basicHDataSetOverview"></a><h2>1. Data Set Overview:</h2>
+<p class="I1"><strong>Project: </strong>Soil Collections</p>
+<p class="I1">Investigators: B. Bond-Lamberty and A.M. Thomson.&nbsp; </p>
+<p class="I1">The compilers of the SRDB database (Bond-Lamberty and Thomson, 
+2010) make it available to the scientific community both as a traditional static 
+archive (ORNL DAAC) and&nbsp;as a dynamic community database that will be updated 
+over time by interested users.&nbsp;The dynamic version of the database is hosted&nbsp;on Google Code:&nbsp;<a href="http://code.google.com/p/srdb/">http://code.google.com/p/srdb/</a>. 
+We recommend that citations to this dynamic database always include a version number and download date.</p>
+	<p class="I1">The SRDB encompasses all published studies that report at least one of the following data measured in the field (not laboratory): annual RS, mean seasonal RS, a seasonal or annual partitioning of RS into its sources fluxes, RS temperature response (Q10), or RS at 10 degrees C. The SRDB was designed to capture and make available for analysis the large number of RS studies published since the 1960s. The data set includes a file of RS data and a linked file of study bibliographic data; both files are in comma-separated format. In Version 3.0, An R script with functions for error-checking and mapping of study locations is also included as a companion to the data set.</p>
+<p class="I1">The ORNL DAAC released Version 1.0 in 2010, Version 2.0 in 2012, 
+and Version 3.0 in 2014, and will update the 
+database on an ongoing basis to incorporate changes and additions submitted by 
+the RS community via the Google Code site and by Bond-Lamberty and Thomson. 
+Transaction logs for the SRDB-data and SRDB-study files are maintained on the 
+Google code site.</p>
+<h3>ORNL DAAC Version Record</h3>
+<table class="grid" cellpadding="3">  <tbody>   <tr>
+      <th class="grid">SRDB Version   </th><th class="grid">ORNL DAAC Release Date</th> <th class="grid">Studies Included</th>
+      <th class="grid">Records</th>   <th class="grid">Date Range</th> <th class="grid">Date Superseded</th></tr>
+    <tr>
+      <td class="grid">Version 3.0</td> <td class="grid">2014/07/24</td>
+      <td class="grid">1,487</td>
+      <td class="grid">5,173</td>
+      <td class="grid">1961-2011</td>  <td class="grid">&nbsp;</td> </tr>
+    <tr>
+      <td class="grid">Version 2.0</td> <td class="grid">2012/03/01</td>
+      <td class="grid">1,021  </td>
+      <td class="grid">4,387 </td>
+      <td class="grid">1961-2009 </td>  <td class="grid">2014/07/24 </td> </tr>
+    <tr>
+      <td class="grid">Version 1.0</td> <td class="grid">2010/04/30</td>
+      <td class="grid">818  </td>
+      <td class="grid">3,379 </td>
+      <td class="grid">1961-2007 </td>  <td class="grid">2012/03/01</td> </tr>
+  </tbody>
+</table>
+<p class="I1"><strong>Version 3.0</strong>: Data from 1,487 studies have been entered into the database, constituting 5,173 records. The data span the measurement years 1961-2011 and are dominated by temperate, well-drained forests. The source for Version 3.0 is srdb_20131218a from the Google Code website. </p>
+<p class="I1"><strong>Versions 1.0 and 2.0</strong>: The source for Version 2.0 is srdb_20110524a from the Google Code website. Note that past versions are considered outdated and Version 3.0 should be accessed for updated data. For access to past versions of the database, please contact the DAAC as indicated in Section 6 of this document.</p>
+	<a name="datacharact"></a><h2>&nbsp;</h2>
+	<h2>2. Data Description:</h2>
+<p class="I1"><strong>Spatial Coverage </strong> </p>
+	<p class="I1">Point-based measurements with global extent (see Fig. 1). Coordinates are provided for each sample location.</p>
+	<p class="I1"><strong>Site boundaries:</strong> (All latitude and longitude given in decimal degrees)</p>
+	
+	<table class="grid" summary="This table gives the lat/lon bounds and geodetic datum for each site." cellpadding="3">
+  <tbody>    <tr>
+      <th class="grid" style="width: 229px" > Site (Region)</th>
+	<th class="grid" style="width: 92px" > Westernmost Longitude</th>
+	<th class="grid" style="width: 96px" > Easternmost Longitude</th>
+	<th class="grid" style="width: 96px" > Northernmost Latitude</th>
+	<th class="grid" style="width: 90px" > Southernmost Latitude</th>
+	<th class="grid" style="width: 130px" > Geodetic Datum</th></tr>
+    <tr>
+      <td class="grid">Global (point)</td>
+<td class="grid">-162.2</td>
+<td class="grid">175.5</td>
+<td class="grid">78.1667</td>
+<td class="grid">-78.02</td>
+<td class="grid">Unknown</td></tr>  </tbody>
+</table>
+
+	<p class="I1"><strong>Temporal Coverage </strong> </p>
+<p class="I1">Compilation of published measurements taken between 1961/01/01 and 2011/12/31. The study date of each record is provided in the data set. </p>
+<p class="I1"><strong>Temporal Resolution</strong> </p>
+<p class="I1">None</p>
+	<p class="I1"><strong>Data File Information</strong></p>
+
+	
+	<p class="I1">The main data file &quot;<strong>srdb-data-V3.csv</strong>&quot; is a comma-separated 
+file of all the soil respiration and contextual data. Bibliographic information for the studies that appear in the main data file can be found in the "<strong>srdb-studies-V3.csv</strong>" file. The “Study_number” field is common to both files and indexes the srdb-studies to srdb-data. </p>
+<p class="I1"><strong>Missing values:</strong>
+&nbsp;In both files, if a value (numeric or text) is missing for a study, that field 
+is left blank.</p>
+<p class="I2"><strong>File Description: srdb-data-V3.csv</strong></p>
+<table class="grid" cellpadding="3"> <tbody> <tr> 
+      <th class="grid">Column Number </th><th class="grid"> Column Name </th>
+     <th class="grid" style="width: 444px">Column Description and Units</th></tr>
+    <tr>
+      <td class="grid">1</td><td class="grid">Record_number</td>
+		<td class="gridL" style="width: 444px">Record number</td></tr>
+    <tr>
+      <td class="grid">2</td><td class="grid">Entry_date</td>
+		<td class="gridL" style="width: 444px">Entry date</td></tr>
+    <tr>
+      <td class="grid">3</td><td class="grid">Study_number</td>
+		<td class="gridL" style="width: 444px">Study number; index into the studies database</td></tr>
+    <tr>
+      <td class="grid">4</td><td class="grid">Author</td>
+		<td class="gridL" style="width: 444px">Name of first author</td></tr>
+    <tr>
+      <td class="grid">5</td><td class="grid">Duplicate_record</td>
+		<td class="gridL" style="width: 444px">Is record a known duplicate? (Study number)</td></tr>
+    <tr>
+      <td class="grid">6</td><td class="grid">Quality_flag</td>
+		<td class="gridL" style="width: 444px">Quality control. <br><br>
+      	  Quality control flags include: <br><br>      
+	    Q0&nbsp;&nbsp;&nbsp; default/none<br>
+        Q01&nbsp;&nbsp;estimated from figure<br>
+	    Q02&nbsp;&nbsp;data from another study<br> Q03&nbsp;&nbsp;data estimated--other<br>
+ 	   Q04&nbsp;&nbsp;potentially useful future data<br>
+ 	   Q10&nbsp;&nbsp;potential problem with data<br>
+ 	   Q11&nbsp;&nbsp;suspected problem with data<br>
+		Q12&nbsp;&nbsp;known problem with data<br>
+ 	   Q13&nbsp;&nbsp;duplicate?<br>
+		Q14&nbsp;&nbsp;inconsistency <br>   
+	  Further details can generally be found in the notes field (#107 below)</td></tr>
+    <tr><td class="grid">7</td><td class="grid">Contributor</td>
+		<td class="gridL" style="width: 444px"> Data contributor</td></tr>
+    <tr>
+      <td class="grid" colspan="3"><strong>Site and measurement data</strong></td></tr>
+    <tr>
+      <td class="grid">8</td><td class="grid">Country</td>
+		<td class="gridL" style="width: 444px">Country</td></tr>
+    <tr>
+      <td class="grid">9</td><td class="grid">Region</td>
+		<td class="gridL" style="width: 444px">State/province/region</td></tr>
+    <tr>
+      <td class="grid">10</td><td class="grid">Site_name</td>
+		<td class="gridL" style="width: 444px">Name of study site</td></tr>
+    <tr>
+      <td class="grid">11</td><td class="grid">Study_midyear</td>
+		<td class="gridL" style="width: 444px">Year study was performed (middle year if multiple years)</td></tr>
+    <tr>
+      <td class="grid">12</td><td class="grid">YearsOfData</td>
+		<td class="gridL" style="width: 444px">Years of data; always &ge;1</td></tr>
+    <tr>
+      <td class="grid">13</td><td class="grid">Latitude</td>
+		<td class="gridL" style="width: 444px">Latitude, decimal; positive=north, negative=south</td></tr>
+    <tr>
+      <td class="grid">14</td><td class="grid">Longitude</td>
+		<td class="gridL" style="width: 444px">Longitude, decimal; positive=east, negative=west</td></tr>
+    <tr>
+      <td class="grid">15</td><td class="grid">Elevation</td>
+		<td class="gridL" style="width: 444px">Elevation, m</td></tr>
+    <tr>
+      <td class="grid">16</td><td class="grid">Manipulation</td>
+		<td class="gridL" style="width: 444px">Manipulation performed (CO2, fertilization, etc.)</td></tr>
+    <tr>
+      <td class="grid">17</td><td class="grid">Manipulation_level</td>
+		<td class="gridL" style="width: 444px">Degree of manipulation performed</td></tr>
+    <tr>
+      <td class="grid">18</td><td class="grid">Age_ecosystem</td>
+		<td class="gridL" style="width: 444px">Time since ecosystem established, years. This is used when, e.g., the time 
+	  of conversion of forest to agriculture is known</td></tr>
+    <tr>
+      <td class="grid">19</td><td class="grid">Age_disturbance</td>
+		<td class="gridL" style="width: 444px">Time since disturbance, years</td></tr>
+    <tr>
+      <td class="grid">20</td><td class="grid">Species</td>
+		<td class="gridL" style="width: 444px">Dominant species</td></tr>
+    <tr>
+      <td class="grid">21</td><td class="grid">Biome</td>
+		<td class="gridL" style="width: 444px">Biome (boreal, temperate, etc). Subjective</td></tr>
+    <tr>
+      <td class="grid">22</td><td class="grid">Ecosystem_type</td>
+		<td class="gridL" style="width: 444px">Ecosystem type (grassland, forest, etc). Subjective</td></tr>
+    <tr>
+      <td class="grid">23</td><td class="grid">Ecosystem_state</td>
+		<td class="gridL" style="width: 444px">Ecosystem state (managed, unmanaged, natural). Subjective. Unmanaged means 
+	  human management or disturbance in the past, but not currently.</td></tr>
+    <tr>
+      <td class="grid">24</td><td class="grid">Leaf_habit</td>
+		<td class="gridL" style="width: 444px">Dominant leaf habit (deciduous, evergreen)</td></tr>
+    <tr>
+      <td class="grid">25</td><td class="grid">Stage</td>
+		<td class="gridL" style="width: 444px">Developmental stage (aggrading, mature). Subjective</td></tr>
+    <tr>
+      <td class="grid">26</td><td class="grid">Soil_type</td>
+		<td class="gridL" style="width: 444px">Soil description (classification and texture)</td></tr>
+    <tr>
+      <td class="grid">27</td><td class="grid">Soil_drainage</td>
+		<td class="gridL" style="width: 444px">Soil drainage (dry, wet). Subjective. Dry means well-drained uplands; wet 	  peatlands, swamps, etc.</td></tr>
+    <tr>
+      <td class="grid">28</td><td class="grid">Soil_BD</td>
+		<td class="gridL" style="width: 444px">Soil bulk density, g cm-3</td></tr>
+    <tr>
+      <td class="grid">29</td><td class="grid">Soil_CN</td>
+		<td class="gridL" style="width: 444px">Soil C:N ratio</td></tr>
+    <tr>
+      <td class="grid">30</td><td class="grid">Soil_sandsiltclay</td>
+		<td class="gridL" style="width: 444px">Soil
+      sand:silt:clay ratio</td></tr>
+    <tr><td class="grid">31<td class="grid">MAT</td>
+		<td class="gridL" style="width: 444px">Reported mean annual temperature,&nbsp;C</td></tr>
+    <tr><td class="grid">32</td><td class="grid">  MAP</td>
+		<td class="gridL" style="width: 444px">  Reported mean annual precipitation, mm</td></tr>
+    <tr><td class="grid">33</td><td class="grid"> PET</td>
+		<td class="gridL" style="width: 444px"> Reported potential evapotranspiration, mm</td></tr>
+    <tr><td class="grid">34</td><td class="grid"> Study_temp </td>
+		<td class="gridL" style="width: 444px">Annual temperature in year of study, C</td> </tr>
+    <tr><td class="grid">35</td><td class="grid">Study_precip</td>
+		<td class="gridL" style="width: 444px">Annual precipitation in year study of study, mm</td></tr>
+    <tr> <td class="grid">36</td><td class="grid">Chamber_method</td>
+		<td class="gridL" style="width: 444px">Chamber method</td></tr>
+    <tr>      <td class="grid">37</td><td class="grid">Meas_method</td>
+		<td class="gridL" style="width: 444px"> CO2 measurement method</td></tr>
+    <tr><td class="grid">38</td><td class="grid"> Meas_interval</td>
+		<td class="gridL" style="width: 444px"> Mean interval between Rs measurements, days</td></tr>
+    <tr><td class="grid">39</td><td class="grid">	  Annual_coverage</td>
+		<td class="gridL" style="width: 444px"> Annual_coverage of Rs measurements, fraction (1.0= full year)</td></tr>
+    <tr><td class="grid">40</td><td class="grid">	  Partition_method</td>
+		<td class="gridL" style="width: 444px">Method used to partition RS source fluxes, following Bond-Lamberty et al. (2004)</td></tr>
+    <tr><td class="grid" colspan="3"><strong>Annual and seasonal RS fluxes</strong></td></tr>
+    <tr><td class="grid">41</td><td class="grid">  Rs_annual</td>
+		<td class="gridL" style="width: 444px"> Annual C flux from soil respiration, g C m-2. This can either be reported directly by the study, calculated from reported mean fluxes, or estimated from a figure (in which case a quality control note is made, field 6)</td></tr>
+    <tr>
+      <td class="grid">42</td><td class="grid">Rs_annual_err</td>
+		<td class="gridL" style="width: 444px">Error (typically plot-to-plot) for Rs_annual, g C m-2</td></tr>
+    <tr>
+      <td class="grid">43</td><td class="grid">Rs_interann_err</td>
+		<td class="gridL" style="width: 444px">Interannual error reported for Rs_annual, g C m-2. This is occasionally reported by authors, or defined as the standard deviation between year ‘i’ and year ‘i+1’ (N=2)</td></tr>
+    <tr>
+      <td class="grid">44</td><td class="grid">Rs_max</td>
+		<td class="gridL" style="width: 444px">Maximum RS flux, µmol m-2 s-1</td></tr>
+    <tr>
+      <td class="grid">45</td><td class="grid">Rs_maxday</td>
+		<td class="gridL" style="width: 444px">Maximum RS flux day of year</td></tr>
+    <tr>
+      <td class="grid">46</td><td class="grid">Rs_min</td>
+		<td class="gridL" style="width: 444px">Minimum RS flux, µmol m-2 s-1</td></tr>
+    <tr>
+      <td class="grid">47</td><td class="grid">Rs_minday</td>
+		<td class="gridL" style="width: 444px">Minimum RS flux day of year</td></tr>
+    <tr>
+      <td class="grid">48</td><td class="grid">Rlitter_annual</td>
+		<td class="gridL" style="width: 444px">Annual RS flux from litter, g C m-2	  fraction</td></tr>
+    <tr>
+      <td class="grid">49</td><td class="grid">Ra_annual</td>
+		<td class="gridL" style="width: 444px">Annual autotrophic RS flux, g C m-2</td></tr>
+    <tr>
+      <td class="grid">50</td><td class="grid">Rh_annual</td>
+		<td class="gridL" style="width: 444px">Annual heterotrophic RS flux, g C m-2</td></tr>
+    <tr>
+      <td class="grid">51</td><td class="grid">Rc_annual</td>
+		<td class="gridL" style="width: 444px">Root contribution to Rs_annual, annual fraction</td></tr>
+    <tr>
+      <td class="grid">52</td><td class="grid">Rs_spring</td>
+		<td class="gridL" style="width: 444px">Mean spring RS flux, µmol m-2 s-1. Seasons are defined by authors</td></tr>
+    <tr>
+      <td class="grid">53</td><td class="grid">Rs_summer</td>
+		<td class="gridL" style="width: 444px">Mean summer RS flux, µmol m-2 s-1</td></tr>
+    <tr>
+      <td class="grid">54</td><td class="grid">Rs_autumn</td>
+		<td class="gridL" style="width: 444px">	Mean autumn RS flux, µmol m-2 s-1 </td></tr>
+    <tr>
+      <td class="grid">55</td><td class="grid">Rs_winter</td>
+		<td class="gridL" style="width: 444px">Mean winter RS flux, µmol m-2 s-1</td></tr>
+    <tr>
+      <td class="grid">56</td><td class="grid">Rs_growing</td>
+		<td class="gridL" style="width: 444px">Mean growing RS flux, µmol m-2 s-1</td></tr>
+    <tr>
+      <td class="grid">57</td><td class="grid">Rs_wet</td>
+		<td class="gridL" style="width: 444px">Mean wet season RS flux, µmol m-2 s-1 </td></tr>
+    <tr>
+      <td class="grid">58</td><td class="grid">Rs_dry</td>
+		<td class="gridL" style="width: 444px">Mean dry season RS flux, µmol m-2 s-1</td></tr>
+    <tr>
+      <td class="grid">59</td><td class="grid">RC_seasonal</td>
+		<td class="gridL" style="width: 444px">Root contribution to seasonal RS, fraction</td></tr>
+    <tr>
+      <td class="grid">60</td><td class="grid">RC_season</td>
+		<td class="gridL" style="width: 444px">Season of RC_seasonal</td></tr>
+    <tr>
+      <td class="grid" colspan="3">Response of RS to temperature and moisture</td></tr>
+    <tr>
+      <td class="grid">61</td><td class="grid">Model_type</td>
+		<td class="gridL" style="width: 444px">Type of temperature-response model used </td></tr>
+    <tr>
+      <td class="grid">62</td><td class="grid">Model_effect</td>
+		<td class="gridL" style="width: 444px">Temperature effect on RS (none, positive, negative)</td></tr>
+    <tr>
+      <td class="grid">63</td><td class="grid">Model_output_units</td>
+		<td class="gridL" style="width: 444px">Temperature-response model output units</td></tr>
+    <tr>
+      <td class="grid">64</td><td class="grid">Model_temp_range</td>
+		<td class="gridL" style="width: 444px">Soil temperature range over which model fitted </td></tr>
+    <tr>
+      <td class="grid">65</td><td class="grid">Model_N</td>
+		<td class="gridL" style="width: 444px">Model N</td></tr>
+    <tr>
+      <td class="grid">66</td><td class="grid">Model_R2</td>
+		<td class="gridL" style="width: 444px">Model r-squared</td></tr>
+    <tr>
+      <td class="grid">67</td><td class="grid">T_depth</td>
+		<td class="gridL" style="width: 444px">Depth at which soil temperature recorded, cm. A value of -200 (i.e., 2 m above ground) is used for air temperature</td></tr>
+    <tr>
+      <td class="grid">68</td><td class="grid">Model_paramA</td>
+		<td class="gridL" style="width: 444px">Model parameter A</td></tr>
+    <tr>
+      <td class="grid">69</td><td class="grid">Model_paramB</td>
+		<td class="gridL" style="width: 444px">Model parameter B</td></tr>
+    <tr>
+      <td class="grid">70</td><td class="grid">Model_paramC</td>
+		<td class="gridL" style="width: 444px">Model parameter C</td></tr>
+    <tr>
+      <td class="grid">71</td><td class="grid">Model_paramD</td>
+		<td class="gridL" style="width: 444px">Model parameter D</td></tr>
+    <tr>
+      <td class="grid">72</td><td class="grid">Model_paramE</td>
+		<td class="gridL" style="width: 444px">Model parameter E</td></tr>
+    <tr>
+      <td class="grid">73</td><td class="grid">WC_effect</td>
+		<td class="gridL" style="width: 444px">Soil water effect on RS</td></tr>
+    <tr>
+      <td class="grid">74</td><td class="grid">R10</td>
+		<td class="gridL" style="width: 444px">RS at 10 C, µmol m-2 s-1</td></tr>
+    <tr>
+      <td class="grid">75</td><td class="grid">Q10_0_10</td>
+		<td class="gridL" style="width: 444px">Q10 temperature response, 0-10 C .Q10 values are either reported by authors, calculated from reported RS-temperature regressions, or occasionally estimated from figures (in which case a quality control note is made, field 6)</td></tr>
+    <tr>
+      <td class="grid">76</td><td class="grid">Q10_5_15</td>
+		<td class="gridL" style="width: 444px">Q10 temperature response, 5-15 C</td></tr>
+    <tr>
+      <td class="grid">77</td><td class="grid">Q10_10_20</td>
+		<td class="gridL" style="width: 444px">Q10 temperature response, 10-20 C</td></tr>
+    <tr>
+      <td class="grid">78</td><td class="grid">Q10_0_20</td>
+		<td class="gridL" style="width: 444px">Q10 temperature response, 0-20 C</td></tr>
+    <tr>
+      <td class="grid">79</td><td class="grid">Q10_other1</td>
+		<td class="gridL" style="width: 444px">Q10 temperature response, other temp range</td></tr>
+    <tr>
+      <td class="grid">80</td><td class="grid">Q10_other1_range</td>
+		<td class="gridL" style="width: 444px">Temperature range of Q10_other1, C</td></tr>
+    <tr>
+      <td class="grid">81</td><td class="grid">Q10_other2</td>
+		<td class="gridL" style="width: 444px">Q10 temperature response, other temp range</td></tr>
+    <tr>
+      <td class="grid">82</td><td class="grid">Q10_other2_range</td>
+		<td class="gridL" style="width: 444px">Temperature range of Q10_other2, C</td></tr>
+    <tr>
+      <td class="grid" colspan="3"><strong>Ancillary pools and fluxes</strong></td></tr>
+    <tr>
+      <td class="grid">83</td><td class="grid">GPP</td>
+		<td class="gridL" style="width: 444px">Annual gross primary production at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">84</td><td class="grid">ER</td>
+		<td class="gridL" style="width: 444px">Annual ecosystem respiration at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">85</td><td class="grid">NEP</td>
+		<td class="gridL" style="width: 444px">Annual net ecosystem production at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">86</td><td class="grid">NPP</td>
+		<td class="gridL" style="width: 444px">Annual net primary production at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">87</td><td class="grid">ANPP</td>
+		<td class="gridL" style="width: 444px">Annual aboveground NPP at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">88</td><td class="grid">BNPP</td>
+		<td class="gridL" style="width: 444px">Annual belowground NPP at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">89</td><td class="grid">NPP_FR</td>
+		<td class="gridL" style="width: 444px">Annual fine root NPP at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">90</td><td class="grid">TotDet_flux</td>
+		<td class="gridL" style="width: 444px">Annual total litter flux, g C m-2. This should be the sum of 	  Litter_fluxand Rootlitter_flux</td></tr>
+    <tr>
+      <td class="grid">91</td><td class="grid">TBCA</td>
+		<td class="gridL" style="width: 444px">Total belowground carbon allocation at site, g C m-2</td></tr>
+    <tr>
+      <td class="grid">92</td><td class="grid">Rootlitter_flux</td>
+		<td class="gridL" style="width: 444px">Annual aboveground litter flux, g C m-2. This is reported very inconsistently (leaf only, leaf and fine woody material, all material, etc). Generally this should not include large woody material</td></tr>
+    <tr>
+      <td class="grid">93</td><td class="grid">TotDet_flux</td>
+		<td class="gridL" style="width: 444px"> Annual total litter flux, g C m-2. This should be the sum of Litter_flux and Rootlitter_flux </td></tr>
+    <tr>
+      <td class="grid">94</td><td class="grid">Ndep</td>
+		<td class="gridL" style="width: 444px">Annual nitrogen deposition, g N m-2 </td></tr>
+    <tr>
+      <td class="grid">95</td><td class="grid">LAI</td>
+		<td class="gridL" style="width: 444px">Leaf area index at site, m2 m-2. Hemispheric (one-sided) if possible</td></tr>
+    <tr>
+      <td class="grid">96</td><td class="grid">BA</td>
+		<td class="gridL" style="width: 444px">Basal area at site, m2 ha-1 </td></tr>
+    <tr>
+      <td class="grid">97</td><td class="grid">C_veg_total</td>
+		<td class="gridL" style="width: 444px">Total carbon in vegetation, g C m-2. This should be the sum of C_AG and C_BG. For this and all "C_" fields, biomass is converted to carbon using a ratio of 0.5 unless study-specific values are available </td></tr>
+    <tr>
+      <td class="grid">98</td><td class="grid">C_AG</td>
+		<td class="gridL" style="width: 444px">Total carbon in aboveground vegetation, g C m-2</td></tr>
+    <tr>
+      <td class="grid">99</td><td class="grid">C_BG</td>
+		<td class="gridL" style="width: 444px">Total carbon in belowground vegetation, g C m-2</td></tr>
+    <tr>
+      <td class="grid">100</td><td class="grid">C_CR</td>
+		<td class="gridL" style="width: 444px">Total carbon in coarse roots, g C m-2</td></tr>
+    <tr>
+      <td class="grid">101</td><td class="grid">C_FR</td>
+		<td class="gridL" style="width: 444px">Total carbon in fine roots, g C m-2</td></tr>
+    <tr>
+      <td class="grid">102</td><td class="grid">C_litter</td>
+		<td class="gridL" style="width: 444px">Total carbon in standing litter, g C m-2</td></tr>
+    <tr>
+      <td class="grid">103</td><td class="grid">C_soil</td>
+		<td class="gridL" style="width: 444px">Total carbon in soil organic matter, g C m-2</td></tr>
+    <tr>
+      <td class="grid">104</td><td class="grid">C_soildepth</td>
+		<td class="gridL" style="width: 444px">Depth to which soil C recorded, cm</td></tr>
+    <tr>
+      <td class="grid">105</td><td class="grid">Notes</td>
+		<td class="gridL" style="width: 444px">Notes</td></tr>
+  </tbody>
+</table>
+	<br>
+
+<p class="I2"><strong>File Description: srdb-studies-V3.csv</strong></p>
+<table class="grid"> <tbody> <tr> 
+      <th class="grid" style="width: 87px">Column Number</th>
+	  <th class="grid" style="width: 107px">Column Name</th>
+<th class="grid" style="width: 228px">Column Description</th></tr>
+    <tr>
+      <td class="grid" style="width: 87px">1</td>
+		<td class="grid" style="width: 107px">Study_number</td>
+      <td class="gridL" style="width: 228px">Study number; used as a lookup from srdb-data</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">2</td>
+		<td class="grid" style="width: 107px">Authors</td>
+		<td class="gridL" style="width: 228px">Study authors</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">3</td>
+		<td class="grid" style="width: 107px">Title</td>
+		<td class="gridL" style="width: 228px">Study title</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">4</td>
+		<td class="grid" style="width: 107px">Source</td>
+		<td class="gridL" style="width: 228px">Study source (usually journal name)</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">5</td>
+		<td class="grid" style="width: 107px">Volume</td>
+		<td class="gridL" style="width: 228px">Volume number</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">6</td>
+		<td class="grid" style="width: 107px">Issue</td>
+		<td class="gridL" style="width: 228px">Issue number</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">7</td>
+		<td class="grid" style="width: 107px">BP</td>
+		<td class="gridL" style="width: 228px">Beginning page</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px; height: 30px;">8</td>
+		<td class="grid" style="width: 107px; height: 30px;">EP</td>
+		<td class="gridL" style="width: 228px; height: 30px;">Ending page</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">9</td>
+		<td class="grid" style="width: 107px">Pub_year</td>
+		<td class="gridL" style="width: 228px">Publication year</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">10</td>
+		<td class="grid" style="width: 107px">Notes</td>
+		<td class="gridL" style="width: 228px">Notes</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">11</td>
+		<td class="grid" style="width: 107px">Abstract</td>
+		<td class="gridL" style="width: 228px">Abstract</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">12</td>
+		<td class="grid" style="width: 107px">Citations</td>
+		<td class="gridL" style="width: 228px">Citations</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">13</td>
+		<td class="grid" style="width: 107px">DE</td>
+		<td class="gridL" style="width: 228px">Data entry: entered into srdb-data (Y, N)?</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">14</td>
+		<td class="grid" style="width: 107px">DLD</td>
+		<td class="gridL" style="width: 228px">Downloaded: study acquired (Y/N)?</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">15</td>
+		<td class="grid" style="width: 107px">DOI</td>
+		<td class="gridL" style="width: 228px">Digital object identifier</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">16</td>
+		<td class="grid" style="width: 107px">nonEnglish</td>
+		<td class="gridL" style="width: 228px">Is study in a non-English language (Y/N)?</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">17</td>
+		<td class="grid" style="width: 107px">Rank</td>
+		<td class="gridL" style="width: 228px">Rank (1=highly relevant, 4=not relevant). Note this score is not an assessment of the study's scientific merit or validity; it's simply a judgment, based on reading the abstract and title, of how relevant this study is to the database (i.e., is it likely to have appropriate data?)</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">18</td>
+		<td class="grid" style="width: 107px">SearchDate</td>
+		<td class="gridL" style="width: 228px">Date search performed</td></tr>
+    <tr>
+      <td class="grid" style="width: 87px">19</td>
+		<td class="grid" style="width: 107px">SearchTerm</td>
+		<td class="gridL" style="width: 228px">Web of Science search term used</td></tr> </tbody>
+</table><br>
+<p class="I1"><strong>Companion File Information:</strong></p>
+
+<ul><li>An R script, srdb.R, containing functions for error-checking, mapping of study locations,&nbsp;summary statistics, and summary graphics  is included. Note that this
+ script requires installation of the following R packages: "ggplot2", "reshape2", "maps", and "mapdata". The script must be run from the same directory that contains the data file (<strong>srdb-data-V3.csv</strong>). Error-checking functions include helper functions to check the valid range and data type of each field. Summary statistics include the breakdown of data by Biome, Ecosystem, Rs_annual, R_10, and Q_10. Scripts to create two maps are provided: the world map shown in Fig. 1 above, and a map of the data from North America. Summary graphics include: Rs summary distributions by Biome, Ecosystem, Ecosystem State, and Season, as well as a plot of Rs_annual vs Rh_annual.
+</li></ul><ul><li>	When it was necessary to calculate or estimate annual flux for one of the studies, these calculations and notes were recorded in an Excel spreadsheet. These spreadsheets are provided as a companion file and have been compiled and compressed into a single file, 
+	<strong>calculations_worksheets_v3.zip</strong>.
+</li></ul>
+
+
+<a name="appderivation"></a>
+
+	<h2>3. Data Application and Derivation:</h2>
+<p class="I1">This is a database compiled from published studies about soil 
+surface CO2 flux (soil respiration; RS) measured in the field and&nbsp;intended to serve 
+as a resource for scientific analysis.&nbsp;</p>
+<p class="I1">The primary RS units used were gC/m2/yr (for annual fluxes) and umol/m2/s (for mean seasonal fluxes); values were converted as necessary from those provided by study authors. A variety of ancillary data were also entered when reported, including site-related and experimental data, information on ecosystem structure and function, methods used, etc.; we assumed a 12:44 ratio of C to CO2 molecular weights, and that biomass was 50% C (unless specified otherwise in the study).  </p>
+<a name="qualityassess"></a><h2>4. Quality Assessment:</h2>
+<p class="I1">Data were crosschecked against a number of other RS data collections and meta-analyses (Hibbard et al., 2005; Chen and Tian, 2005; Burton et al., 2008; Sottaet al., 2004). Quality flags were assigned based on information provided in a given study and best judgment.</p>
+<a name="HAcqMatMethods"></a><h2>5. Data Acquisition 
+Materials and Methods:</h2>
+<p class="I1">For the compilation of Version 1, 
+investigators collected all available studies in the peer-reviewed scientific 
+literature reporting RS&nbsp;measured in the field; lab incubation studies were not 
+included. The ISI Web of Science&nbsp;constituted the primary source of published 
+studies; search terms used included soil&nbsp;respiration, soil CO2 evolution, 
+etc., and were conducted through the 2008 publication&nbsp; year. We used each 
+study&#39;s title and abstract to decide whether to acquire it; ~40% of the&nbsp;almost 
+4700 studies were acquired and examined.&nbsp;</p>
+<p class="I1">In version 2.0, publications from 
+2009, 2010 and from the first half of 2011 were included and RS data from 164 studies have 
+been added. The Google Earth.kmz file of site locations was updated. 
+Additionally, a number of corrections have been made. A number of Age_disturbance fields have been corrected and completed. The Partition_method 
+field has been fixed for many records. Finally, three fields have been deleted: 
+Chamber_method, CH4_flux, N2O_flux. These fields were inconsistent or almost 
+never used. </p>
+	<p class="I1">In Version 3.0, publications from 2012 and RS data from a total of 466 new 
+	studies were added. Many corrections were made to older data and a new R script for error-checking and mapping was created. The Google Earth.kmz file was removed and the field CO2_method was renamed to Meas_method. Additionally, two new fields titled Meas_interval and Annual_coverage were added to the data.</p>
+
+<p class="I1">Short term experiments (i.e., RS 
+measurements made over less than 1-2 weeks) were not entered&nbsp;unless the study 
+authors extrapolated their results to seasonal or annual values; the database is 
+in general not designed to accommodate instantaneous or short-term measurements. 
+In general we did not do additional research to find older publications that 
+might not be listed in the Web of Science.&nbsp; To qualify for inclusion, a 
+study had to report at least one of the following data:</p>
+<ul>
+  <li>Annual RS</li>
+  <li>Mean seasonal RS</li>
+  <li>Annual or 
+  seasonal partitioning of RS sources</li>
+  <li>Q10 and 
+  associated temperature range</li>
+  <li>R10 (RS at 10 degrees C)</li>
+</ul>
+<p class="I1">If at least one of these data was 
+reported, or could be calculated with few or no assumptions, e.g., easily 
+estimated from points in a figure, the study was entered into the database. For 
+example, sometimes a study will show monthly soil respiration in a figure but 
+not compute an annual flux, and so estimates were made from the figure. This was 
+noted in a quality&nbsp;flag.</p>
+<p class="I1">When it was necessary to calculate or estimate annual flux for one of the studies, these calculations and notes were recorded in an Excel spreadsheet (*.xlsx). File names start with the assigned four-digit “Study_number” that indexes the srdb-studies and srdb-data files. For example, "0020 WitkampEcology 1966.xlsx" and "4634 Webster JGR 2008.xlsx". These spreadsheets are provided as a companion file and have been compiled and compressed into a single file, calculations_worksheets_v3.zip.</p>
+<a name="HDataDescrAccess"></a><a name="HDataDescrAccess"></a>
+<h2>6.  Data Access:</h2>	
+<p class="I1">This data is available through the Oak Ridge National Laboratory (ORNL) Distributed Active Archive Center (DAAC).</p>
+<h3>Data Archive Center:</h3>
+<p class="I3">Contact for Data Center Access Information:<br>
+E-mail: <a href="mailto:uso@daac.ornl.gov">uso@daac.ornl.gov</a><br>
+Telephone: +1 (865) 241-3952</p>
+<a name="references"></a>
+<h2>7. References:</h2><p class="I1">
+Bond-Lamberty, B. and A.M. Thomson. 2010. A global database of soil respiration 
+measurements, Biogeosciences, 7, 1321-1344, 
+doi:10.5194/bgd-7-1321-2010.</p>
+<p class="I1">Burton, A. J., Melillo, J. M., and Frey, S. D. 2008.: Adjustment of forest ecosystem root respiration as temperature warms, Journal of Integrative Plant Biology, 50, 1467-1483, doi:10.1111/j.1744-7909.2008.00750.x.</p>
+<p class="I1">Chen, H., and Tian, H.-Q. 2005. Does a general temperature-dependent Q(10) model of soil respiration exist at biome and global scale?, Journal of Integrative Plant Biology, 47, 1288-1302.</p>
+<p class="I1">Hibbard, K. A., Law, B. E., and Sulzman, J. 2005. An analysis of soil respiration across northern hemisphere temperate ecosystems, Biogeochemistry, 73, 29-70, doi:10.1007/s10533-004-2946-0.</p>
+<p class="I1">Sotta, E. D., Meir, P., Malhi, Y., Nobre, A. D., Hodnett, M., and Grace, J. 2004. Soil CO2 efflux in a tropical forest in the central Amazon, Global Change Biol., 10, 601-617, doi:10.1111/j.1529-8817.2003.00761.x.
+ </div>
+ <br>
+ </p><!--#include virtual="/guide_footer.shtml" -->
+</div></body></html>

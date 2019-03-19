@@ -1,0 +1,39 @@
+Author: Dave Moore
+Date: 11/22/2014
+Project NSF RAPID | High Park ecosystem function post beetle and fire disturbance. 
+
+I have defined the codes for beetle kill or not and visual fire severity categories as follows:
+VisualFireSeverity='Visual Estimates of burn intensity Trahan/Dynes| UNBUR: Unburned, LIGHT: Light Burn, MOD: Moderate Burn, SEVER: Severe Burn';
+Fire_CODE='Coded Visual Estimates of burn intensity Trahan/Dynes| 0: Unburned, 1: Light Burn, 2: Moderate Burn, 3: Severe Burn';
+
+BarkBeetle='Evidence of Bark Beetle Damage (tree rings and field estimates Trahan/Dynes)| YES: Evidence present, NO: Evidence Absent';
+Beetle_CODE='Coded Evidence of Bark Beetle Damage (tree rings and field estimates Trahan/Dynes)| 1: Evidence present, 0: Evidence Absent';
+
+I have created a THREE CHARACTER CODE for the plot numbers (it must be a three character code in char$/string format)
+PlotCODE_ID='Three Letter code for within site identification';
+
+***NICOLE FYI 
+To harmonize the plot numbers (from number format) you can use the following code to create the ‘plotCODE_ID’ from numeric values from 1 to 118
+When we merge these files with the laboratory data we will merge by Site and by plotCODE_ID’ based on plot level summaries. 
+
+plotCODE = plot + 1000;
+Junk1 = put(plotCODE, 4.) ; 
+PlotCODE_ID = substr(Junk1, 2, 3);
+drop Junk1 plotCODE;
+
+Within each plot there are 4 soil efflux collars indicated by the variable QUADRANT. In Niwot/Fraser we went with N,S,E,W – in High Park we went with NE,NW,SE,SW. To harmonize these codes I’ve made them uppercase TWO LETTER codes by adding the letter Q to the Niwot/Fraser codes. 
+
+QUADRANT='Quadrant of plot/location where the soil collar was placed| FEF & NWT collars are arranged on cardinal axes North, South, East or West | All High Park location have collars arranged on intercardinal axes';
+
+Thus the plots can be identified uniquely by site, plot and disturbance category, by adding the codes for beetles and fire as follows:
+
+PLOTID='Unique identifier for each plot| combination of site||PlotCODE_ID||Beetle_CODE||Fire_CODE';
+
+For example
+LSP02200
+Lory State Park, plot 022, no beetle kill, unburned
+
+SPR04111
+Stove Prairie Ranch, plot 041, beetle killed, light burn  
+
+See README files for header information and units
