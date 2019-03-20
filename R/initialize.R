@@ -19,7 +19,7 @@
 initialize <- function(param)	{
 
   updatedParam <- param %>%
-    mutate(value=if_else(changeable==1,runif(n(),min=minVal,max=maxVal),value)) %>%
+    mutate(value=if_else(changeable,runif(1,min=minVal,max=maxVal),value)) %>%
     mutate(knob=1) %>% # add in a row of "temperatures" for simulated annealing
     mutate(sampled=FALSE)  # a T/F to see if this has been sampled or not.
 

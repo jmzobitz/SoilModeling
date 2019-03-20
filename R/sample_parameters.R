@@ -23,7 +23,7 @@ sample_parameters <- function(param)	{
 
   # Pick out a row to change
   sampled_param <- param %>%
-    filter(changeable==1) %>%
+    filter(changeable) %>%
     sample_n(1) %>%
     mutate(value = knob*(maxVal-minVal)+tune*value,
            sampled=TRUE) %>%
