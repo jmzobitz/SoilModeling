@@ -117,7 +117,7 @@ enzymes_Q10 <- enzymes %>%
               #  q975=quantile(estimate,0.975)
     ) %>%
     spread(key=term,value=median) %>%
-    rename(slope=2,intercept=3)
+    rename(slope=2,intercept=3,site=SITE)
 
 
 use_data(Q10_temperature,overwrite = TRUE)

@@ -1,0 +1,12 @@
+Processing pipeline for package data
+
+1) Read in raw data files from data-raw using data-prepare.R
+2) Analyze temperature sensitivity of Q10 to enzymes with enzyme-analysis.R
+- need to put this not in the R package directory, include this in the build ignore
+
+Running to do list:
+- get documentation set up for:
+  * flux_data
+  * microbe_data
+  * Q10_temperature
+  * mcmc_defaults

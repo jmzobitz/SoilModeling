@@ -1,0 +1,3 @@
+name,changeable,value,minVal,maxVal
+soilRespMoistEffect,0,1,0,2
+baseSoilResp,1,500,0,1000

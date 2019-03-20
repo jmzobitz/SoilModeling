@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^data-process$
+^manuscript-figures$
+^param-defaults$

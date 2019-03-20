@@ -1,4 +1,0 @@
-Processing pipeline for package data
-
-1) Read in raw data files from data-raw using data-prepare.R
-2) Analyze temperature sensitivity of Q10 to enzymes with enzyme-analysis.R
