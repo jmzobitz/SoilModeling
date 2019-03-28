@@ -16,17 +16,11 @@
 #'
 
 
-likelihood <- function(model_values,data_values,join_key){
+likelihood <- function(model_values,data_in){
   # set up flags for model
 
-  # join up modeled_values to data_values by join_key
-  data_comparisons <- data_values %>% inner_join(model_values,by=join_key)
 
-
-  sumll <- data_comparisons %>%
-    ungroup() %>%
-    summarize(tot = sum(dnorm(value,mean=rSoil,sd=rSoilErr,log=TRUE),na.rm=TRUE)) %>%
-    as.numeric()
+  sumll <- sum(dnorm(model_values$value,mean=data_in$rSoil,sd=data_in$rSoilErr,log=TRUE),na.rm=TRUE)
 
 
 

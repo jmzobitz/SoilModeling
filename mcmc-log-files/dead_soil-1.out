@@ -1,0 +1,83 @@
+Starting Parameter Estimation
+Input parameter file:  param-defaults/dead_soil-param.csv
+Output parameter estimate file:  mcmc-results/dead_soil-1.Rda
+
+Number of Chains:  5
+Max Iterations per Chain:  150000
+Burn Iterations / Estimate Iterations:  70000  /  80000
+
+Chain 1 of  5
+Start Chain Time: Sat Mar 23 04:15:26 2019
+Iteration:  10000 38.77 % accepted at  Sat Mar 23 04:16:35 2019
+
+Max LL of chain:  -702.958
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	243.413	0.053
+
+End Chain Time: Sat Mar 23 04:16:35 2019
+***********************
+Chain 2 of  5
+Start Chain Time: Sat Mar 23 04:16:35 2019
+Iteration:  10000 38.79 % accepted at  Sat Mar 23 04:17:41 2019
+
+Max LL of chain:  -3247.681
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	236.123	0.057
+
+End Chain Time: Sat Mar 23 04:17:41 2019
+***********************
+Chain 3 of  5
+Start Chain Time: Sat Mar 23 04:17:41 2019
+Iteration:  10000 38.84 % accepted at  Sat Mar 23 04:18:49 2019
+
+Max LL of chain:  -635.583
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	242.59	0.062
+
+End Chain Time: Sat Mar 23 04:18:49 2019
+***********************
+Chain 4 of  5
+Start Chain Time: Sat Mar 23 04:18:49 2019
+Iteration:  10000 38.72 % accepted at  Sat Mar 23 04:19:55 2019
+
+Max LL of chain:  -1375.748
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	232.646	0.047
+
+End Chain Time: Sat Mar 23 04:19:55 2019
+***********************
+Chain 5 of  5
+Start Chain Time: Sat Mar 23 04:19:55 2019
+Iteration:  10000 38.89 % accepted at  Sat Mar 23 04:21:01 2019
+
+Max LL of chain:  -5871.516
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	242.429	0.068
+
+End Chain Time: Sat Mar 23 04:21:01 2019
+***********************
+Starting parameter estimation from maxLL parameters from chain:  3
+
+Start Chain Time: Sat Mar 23 04:21:01 2019
+End Chain Time: Sat Mar 23 04:30:19 2019
+Burn chain acceptance:  35.23 % accepted 
+
+Starting estimate chain.
+Start Chain Time: Sat Mar 23 04:30:19 2019
+Estimate chain acceptance:  35.325 % accepted 
+End Chain Time: Sat Mar 23 04:43:48 2019

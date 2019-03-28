@@ -19,13 +19,19 @@
 
 sample_parameters <- function(param)	{
 
-  tune <- runif(1,min=-0.5,max=0.5)
+  #tune <- runif(1,min=-0.5,max=0.5)
+
+
+
+
 
   # Pick out a row to change
   sampled_param <- param %>%
     filter(changeable) %>%
     sample_n(1) %>%
-    mutate(value = knob*(maxVal-minVal)+tune*value,
+  #  mutate(value = knob*(maxVal-minVal)*tune+value,
+  #         sampled=TRUE) %>%
+    mutate(value = runif(1,min=max(minVal,value-0.5*knob*(maxVal-minVal)),max=min(maxVal,value+0.5*knob*(maxVal-minVal))),
            sampled=TRUE) %>%
     select(name,value,sampled)
 

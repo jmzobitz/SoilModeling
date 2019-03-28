@@ -4,7 +4,7 @@
 \alias{likelihood}
 \title{Compute the loglikelihood of a model and data version of a model}
 \usage{
-likelihood(model_values, data_values, join_key)
+likelihood(model_values, data_in)
 }
 \arguments{
 \item{model_values}{input model_values - a dataframe with (at least) two columns:

@@ -1,0 +1,158 @@
+Starting Parameter Estimation
+Input parameter file:  param-defaults/arrhenius-param.csv
+Output parameter estimate file:  mcmc-results/arrhenius-1.Rda
+
+Number of Chains:  5
+Max Iterations per Chain:  150000
+Burn Iterations / Estimate Iterations:  70000  /  80000
+
+Chain 1 of  5
+Start Chain Time: Fri Mar 22 14:10:11 2019
+Iteration:  10000 56.02 % accepted at  Fri Mar 22 14:11:24 2019
+Iteration:  20000 58.23 % accepted at  Fri Mar 22 14:12:34 2019
+Iteration:  30000 58.23 % accepted at  Fri Mar 22 14:13:57 2019
+Iteration:  40000 57.51 % accepted at  Fri Mar 22 14:15:08 2019
+Iteration:  50000 57.28 % accepted at  Fri Mar 22 14:16:18 2019
+Iteration:  60000 57.28 % accepted at  Fri Mar 22 14:17:29 2019
+Iteration:  70000 57.08 % accepted at  Fri Mar 22 14:18:39 2019
+Iteration:  80000 57.08 % accepted at  Fri Mar 22 14:19:49 2019
+Iteration:  90000 58.2 % accepted at  Fri Mar 22 14:21:00 2019
+Iteration:  1e+05 57.87 % accepted at  Fri Mar 22 14:22:11 2019
+Iteration:  110000 57.07 % accepted at  Fri Mar 22 14:23:20 2019
+Iteration:  120000 57.45 % accepted at  Fri Mar 22 14:24:30 2019
+Iteration:  130000 57.78 % accepted at  Fri Mar 22 14:25:39 2019
+Iteration:  140000 57.55 % accepted at  Fri Mar 22 14:26:49 2019
+Iteration:  150000 57.14 % accepted at  Fri Mar 22 14:27:58 2019
+
+Max LL of chain:  -621.391
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	228.013	0.046
+activationEnergy	TRUE	1282.546	1
+
+End Chain Time: Fri Mar 22 14:27:58 2019
+***********************
+Chain 2 of  5
+Start Chain Time: Fri Mar 22 14:27:58 2019
+Iteration:  10000 56.9 % accepted at  Fri Mar 22 14:29:08 2019
+Iteration:  20000 57.48 % accepted at  Fri Mar 22 14:30:17 2019
+Iteration:  30000 57.19 % accepted at  Fri Mar 22 14:31:25 2019
+Iteration:  40000 57.65 % accepted at  Fri Mar 22 14:32:35 2019
+Iteration:  50000 56.82 % accepted at  Fri Mar 22 14:33:44 2019
+Iteration:  60000 57.75 % accepted at  Fri Mar 22 14:34:53 2019
+Iteration:  70000 57.54 % accepted at  Fri Mar 22 14:36:01 2019
+Iteration:  80000 57.52 % accepted at  Fri Mar 22 14:37:10 2019
+Iteration:  90000 57.32 % accepted at  Fri Mar 22 14:38:20 2019
+Iteration:  1e+05 57.71 % accepted at  Fri Mar 22 14:39:30 2019
+Iteration:  110000 57.77 % accepted at  Fri Mar 22 14:40:42 2019
+Iteration:  120000 57.37 % accepted at  Fri Mar 22 14:41:53 2019
+Iteration:  130000 58.19 % accepted at  Fri Mar 22 14:43:07 2019
+Iteration:  140000 57.55 % accepted at  Fri Mar 22 14:44:17 2019
+Iteration:  150000 57.06 % accepted at  Fri Mar 22 14:45:29 2019
+
+Max LL of chain:  -618.96
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	252.635	0.061
+activationEnergy	TRUE	8043.498	1
+
+End Chain Time: Fri Mar 22 14:45:29 2019
+***********************
+Chain 3 of  5
+Start Chain Time: Fri Mar 22 14:45:29 2019
+Iteration:  10000 55.95 % accepted at  Fri Mar 22 14:46:40 2019
+Iteration:  20000 57.32 % accepted at  Fri Mar 22 14:47:52 2019
+Iteration:  30000 57.33 % accepted at  Fri Mar 22 14:49:03 2019
+Iteration:  40000 56.93 % accepted at  Fri Mar 22 14:50:14 2019
+Iteration:  50000 57.16 % accepted at  Fri Mar 22 14:51:23 2019
+Iteration:  60000 57.81 % accepted at  Fri Mar 22 14:52:34 2019
+Iteration:  70000 57.35 % accepted at  Fri Mar 22 14:53:43 2019
+Iteration:  80000 57.57 % accepted at  Fri Mar 22 14:54:52 2019
+Iteration:  90000 57.82 % accepted at  Fri Mar 22 14:56:02 2019
+Iteration:  1e+05 56.89 % accepted at  Fri Mar 22 14:57:12 2019
+Iteration:  110000 57.71 % accepted at  Fri Mar 22 14:58:23 2019
+Iteration:  120000 57.31 % accepted at  Fri Mar 22 14:59:33 2019
+Iteration:  130000 57.86 % accepted at  Fri Mar 22 15:00:43 2019
+Iteration:  140000 57.97 % accepted at  Fri Mar 22 15:01:54 2019
+Iteration:  150000 57.23 % accepted at  Fri Mar 22 15:03:05 2019
+
+Max LL of chain:  -620.219
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	247.329	0.061
+activationEnergy	TRUE	7105.057	1
+
+End Chain Time: Fri Mar 22 15:03:05 2019
+***********************
+Chain 4 of  5
+Start Chain Time: Fri Mar 22 15:03:05 2019
+Iteration:  10000 56.34 % accepted at  Fri Mar 22 15:04:15 2019
+Iteration:  20000 56.93 % accepted at  Fri Mar 22 15:05:25 2019
+Iteration:  30000 57.42 % accepted at  Fri Mar 22 15:06:36 2019
+Iteration:  40000 57.54 % accepted at  Fri Mar 22 15:07:47 2019
+Iteration:  50000 57.68 % accepted at  Fri Mar 22 15:08:57 2019
+Iteration:  60000 56.79 % accepted at  Fri Mar 22 15:10:06 2019
+Iteration:  70000 57.38 % accepted at  Fri Mar 22 15:11:16 2019
+Iteration:  80000 57.66 % accepted at  Fri Mar 22 15:12:25 2019
+Iteration:  90000 57.99 % accepted at  Fri Mar 22 15:13:36 2019
+Iteration:  1e+05 57 % accepted at  Fri Mar 22 15:14:47 2019
+Iteration:  110000 57.68 % accepted at  Fri Mar 22 15:15:56 2019
+Iteration:  120000 57.46 % accepted at  Fri Mar 22 15:17:07 2019
+Iteration:  130000 57.35 % accepted at  Fri Mar 22 15:18:16 2019
+Iteration:  140000 56.95 % accepted at  Fri Mar 22 15:19:27 2019
+Iteration:  150000 57.02 % accepted at  Fri Mar 22 15:20:36 2019
+
+Max LL of chain:  -620.155
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	235.619	0.064
+activationEnergy	TRUE	4921.04	1
+
+End Chain Time: Fri Mar 22 15:20:36 2019
+***********************
+Chain 5 of  5
+Start Chain Time: Fri Mar 22 15:20:36 2019
+Iteration:  10000 56.19 % accepted at  Fri Mar 22 15:21:45 2019
+Iteration:  20000 57.42 % accepted at  Fri Mar 22 15:22:55 2019
+Iteration:  30000 57.35 % accepted at  Fri Mar 22 15:24:04 2019
+Iteration:  40000 56.32 % accepted at  Fri Mar 22 15:25:14 2019
+Iteration:  50000 57.06 % accepted at  Fri Mar 22 15:26:24 2019
+Iteration:  60000 57.33 % accepted at  Fri Mar 22 15:27:35 2019
+Iteration:  70000 57.65 % accepted at  Fri Mar 22 15:28:45 2019
+Iteration:  80000 57.39 % accepted at  Fri Mar 22 15:29:56 2019
+Iteration:  90000 56.81 % accepted at  Fri Mar 22 15:31:06 2019
+Iteration:  1e+05 57.73 % accepted at  Fri Mar 22 15:32:16 2019
+Iteration:  110000 57.81 % accepted at  Fri Mar 22 15:33:26 2019
+Iteration:  120000 57.23 % accepted at  Fri Mar 22 15:34:36 2019
+Iteration:  130000 57.86 % accepted at  Fri Mar 22 15:35:47 2019
+Iteration:  140000 57.18 % accepted at  Fri Mar 22 15:36:56 2019
+Iteration:  150000 57.21 % accepted at  Fri Mar 22 15:38:08 2019
+
+Max LL of chain:  -622.537
+
+Parameter values:
+Parameter Estimated CurrentValue Knob
+soilRespMoistEffect	FALSE	1	1
+baseSoilResp	TRUE	234.388	0.049
+activationEnergy	TRUE	3449.52	1
+
+End Chain Time: Fri Mar 22 15:38:08 2019
+***********************
+Starting parameter estimation from maxLL parameters from chain:  2
+
+Start Chain Time: Fri Mar 22 15:38:08 2019
+End Chain Time: Fri Mar 22 15:48:09 2019
+Burn chain acceptance:  55.336 % accepted 
+
+Starting estimate chain.
+Start Chain Time: Fri Mar 22 15:48:09 2019
+Estimate chain acceptance:  55.605 % accepted 
+End Chain Time: Fri Mar 22 16:02:41 2019

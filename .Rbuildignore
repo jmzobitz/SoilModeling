@@ -4,3 +4,6 @@
 ^data-process$
 ^manuscript-figures$
 ^param-defaults$
+^mcmc-log-files$
+^mcmc-results$
+^code-graveyard$

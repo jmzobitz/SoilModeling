@@ -1,0 +1,6 @@
+name,changeable,value,minVal,maxVal
+soilRespMoistEffect,FALSE,1,0,2
+baseMicrobeResp,TRUE,5,0,1000
+efficiency,TRUE,0.5,0,1
+maxIngestionRate,TRUE,500,0,1000
+halfSatIngestion,TRUE,50,0,100

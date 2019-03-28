@@ -1,0 +1,3 @@
+name,changeable,value,minVal,maxVal
+slope,TRUE,1,1.0,5
+intercept,TRUE,0.0,-1.0,1.0

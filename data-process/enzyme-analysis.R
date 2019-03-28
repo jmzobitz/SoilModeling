@@ -68,8 +68,8 @@ enzymes_Q10 <- enzymes %>%
   spread(key=temperature,value=activity) %>%
   mutate(Q10_4C = `15`/`4`,Q10_15C = `25`/`15`,Q10_25C = `35`/`25`) %>%
   ungroup() %>%
-  select(GalleryNumber,SITE,enzyme,Q10_4C,Q10_15C,Q10_25C) %>% # Pull out variables we need
-  gather(key=temperature,value=Q10_ratio,-(1:3)) %>%
+  select(GalleryNumber,SITE,PLOTID,enzyme,Q10_4C,Q10_15C,Q10_25C) %>% # Pull out variables we need
+  gather(key=temperature,value=Q10_ratio,-(1:4)) %>%
   separate(temperature,c("junk","temperature"),sep="_") %>%  # Remove the _ label
   separate(temperature,c("temperature","junk"),sep="C") %>%  # Remove the C label
   mutate(temperature=as.numeric(temperature)) %>%  # make temperature numeric
@@ -85,10 +85,11 @@ enzymes_Q10 <- enzymes %>%
 
 # Weight the Q10 ratio by each proportion at each sample
   weighted_Q10 <- enzymes_Q10 %>%
-    left_join(select(enzyme_proportion,GalleryNumber,enzyme,temperature,proportion,SITE),
-              by=c("GalleryNumber","enzyme","temperature","SITE")) %>%
+    left_join(select(enzyme_proportion,GalleryNumber,PLOTID,enzyme,temperature,proportion,SITE),
+              by=c("GalleryNumber","enzyme","temperature","SITE","PLOTID")) %>%
     group_by(SITE,GalleryNumber,temperature) %>%
-    summarize(Q10=sum(Q10_ratio*proportion,na.rm=TRUE))
+    summarize(Q10=sum(Q10_ratio*proportion,na.rm=TRUE)) %>%
+    rename(site=SITE)
 
   # Define a general fitting function
   fit_enzyme_weighted <- function(sample) {
@@ -104,30 +105,33 @@ enzymes_Q10 <- enzymes %>%
   }
 
   # Now we can plot the histogram by slope and intercept
-  split_data_weighted <- weighted_Q10 %>% split(.$SITE) %>%
+  split_data_weighted <- weighted_Q10 %>% split(.$site) %>%
     map(fit_enzyme_weighted) %>%
-    bind_rows(.id="SITE")
+    bind_rows(.id="site")
 
   # We have this almost ...
   # YAY!  Now do a histogram across all the sites
   Q10_temperature <- split_data_weighted %>%
-    group_by(SITE,term) %>%
+    group_by(site,term) %>%
     summarize(median=median(estimate) #,
               # q025=quantile(estimate,0.025),
               #  q975=quantile(estimate,0.975)
     ) %>%
     spread(key=term,value=median) %>%
-    rename(slope=2,intercept=3,site=SITE)
+    rename(slope=2,intercept=3)
 
 
+use_data(split_data_weighted,overwrite = TRUE) # Save all the regression data
 use_data(Q10_temperature,overwrite = TRUE)
 
   ## Let's make a plot of this Q10 as a function of temperature
 q10plot <-  weighted_Q10 %>%
+    filter(site %in% unique(microbe_data$site)) %>%
     ggplot() + geom_line(aes(x=temperature,y=Q10,group=GalleryNumber),color='grey') +
-    facet_grid(.~SITE) +
-    geom_abline(data=Q10_temperature,aes(slope=slope,intercept=intercept),color="blue",size=1) +
+  geom_smooth(aes(x=temperature,y=Q10),method="lm",color='red') +
+    geom_abline(data=filter(Q10_temperature,site %in% unique(microbe_data$site)),aes(slope=slope,intercept=intercept,group=site),color="blue",size=1) +
     ylim(c(0,15)) +
+    facet_grid(.~site) +
     labs(x ='Temperature (degrees Celsius)', y = bquote(''*Q[10]*'')) +
     theme_bw(base_size = 16, base_family = "Helvetica") +
     theme(axis.title.x=element_text(face="bold"),axis.title.y=element_text(face="bold"),strip.background = element_rect(colour="white", fill="white"))+ scale_fill_discrete(name="Site")+
@@ -137,5 +141,5 @@ q10plot <-  weighted_Q10 %>%
 
 # Make a plot of the proportion of enzyme activity at each reference temperature and enzyme
 fileName <- paste0('manuscript-figures/q10EnzymeSummary.png')
-ggsave(fileName,plot=q10plot,width=12,height=5)
+ggsave(fileName,plot=q10plot,width=7,height=5)
 

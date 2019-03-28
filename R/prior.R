@@ -20,7 +20,7 @@ prior <- function(param)	{
 
 
   priorProb <- param %>%
-    filter(changeable==1) %>%
+    filter(changeable) %>%
     summarize(probability = sum(dunif(value,min=minVal,max=maxVal,log=TRUE))) %>%
     as.numeric()
 

@@ -4,7 +4,7 @@
 \alias{dead_soil}
 \title{Compute the dead_soil version of a model}
 \usage{
-dead_soil(param)
+dead_soil(param, data_in)
 }
 \arguments{
 \item{param}{input parameter vector - is a data frame with the following columns:

@@ -1,0 +1,6 @@
+name,changeable,value,minVal,maxVal
+soilRespMoistEffect,FALSE,1,0,2
+baseSoilResp,TRUE,5,0,1000
+nSoilPools,FALSE,3,1,5
+baseQualitySlope,TRUE,0,-1,1
+poolQ10QualitySlope,TRUE,0,-1,1
