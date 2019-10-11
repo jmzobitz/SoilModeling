@@ -3,6 +3,8 @@
 library(tidyverse)
 
 param_file_name <- 'param-defaults/dead_soil-param.csv'
+model_id = "dead_soil-"
+mcmc_param_run <- mcmc_superfast  #(or mcmc_defaults)
 
 
 # Spilt off the flux data by treatment
@@ -11,7 +13,7 @@ flux_data_treatment <- flux_data %>% split(.$treatment)  # We've split out the d
 # Generate a list of log files
 log_files <-  list(
   file_loc = "mcmc-log-files/",
-  id = "dead_soil-",
+  id = model_id,
   treatment = unique(flux_data$treatment),
   ending=".out"
 ) %>%
@@ -23,7 +25,7 @@ log_files <-  list(
 # Generate a list of result files
 results_files <-  list(
   file_loc = "mcmc-results/",
-  id = "dead_soil-",
+  id = model_id,
   treatment = unique(flux_data$treatment),
   ending=".Rda"
 ) %>%
@@ -35,7 +37,7 @@ results_files <-  list(
 
 # Now let's map these out - fingers crossed!
 pmap(list(x=log_files,y=results_files,z=flux_data_treatment),
-     .f=function(x,y,z){ run_MCMC(param_file_name,dead_soil,z,"PLOTID",y$file_name,x$file_name,mcmc_superfast) })
+     .f=function(x,y,z){ run_MCMC(param_file_name,dead_soil,z,"PLOTID",y$file_name,x$file_name,mcmc_param_run) })
 
 
 

@@ -1,5 +1,6 @@
 library(tidyverse)
-
+library(devtools)
+library(SoilModeling)
 
 ### Author: JMZ
 ### Modified: 3/17/19
@@ -20,30 +21,38 @@ enzymes <- inputData %>%
   filter(SITE %in% siteNames) %>%
   separate(temperature,c("temperature","junk"),sep="C") %>%  # Remove the C label
   mutate(temperature=as.numeric(temperature)) %>%  # make temperature numeric
-  select(-junk)  # remove the junk column
+  select(-junk) %>% # remove the junk column
+  left_join(select(rapid_data,PLOTID,beetles,fire),by="PLOTID")  # Add in treatment codes
 
+
+# Add in a column to flux_data for the different cases of beetle and fire data, which we call treatments
+treatment_key <- expand(enzymes, nesting(beetles, fire)) %>%
+  mutate(treatment = 1:n())
 
 # Determine the total activity we have for each sample and temperature
 total_activity <- enzymes %>%
   group_by(GalleryNumber,temperature) %>%
   summarize(total_activity = sum(activity))
 
-# Join the activity data to the enzymes
 
+# Join the treatment data to the enzyme
+enzymes %>% inner_join(treatment_key,by=c("beetles","fire")) -> enzymes
+
+
+# Join the activity data to the enzymes
 enzyme_proportion <- enzymes %>%
   inner_join(total_activity,by=c("GalleryNumber","temperature")) %>%
-  mutate(proportion = activity/total_activity) #%>%
- # filter(temperature != "35C")  # remove the high temperature activity
-
+  mutate(proportion = activity/total_activity)
 
 
 enzyme_plot <- enzyme_proportion %>%
-  ggplot(aes(x = factor(temperature), y = proportion)) +
-  geom_jitter(size=1,aes(color=factor(temperature))) +
+  filter(temperature ==15) %>%
+  ggplot(aes(x = treatment, y = proportion,color=as.factor(treatment))) +
+  geom_jitter(size=1) +
   geom_boxplot(outlier.size=0,alpha=0.5) +
   coord_cartesian(ylim = c(0, 1)) +
-  facet_grid(.~ enzyme) +
-  labs(x='Temperature (degrees Celsius)',y = 'Proportional Activity') +
+  facet_grid(.~enzyme) +
+  labs(x='Treatment',y = "Proportional activity at 15 \u00B0C") +
   theme_bw(base_size = 16, base_family = "Helvetica") +
   theme(axis.title.x=element_text(face="bold"),axis.title.y=element_text(face="bold"),strip.background = element_rect(colour="white", fill="white"))+ scale_fill_discrete(name="Site")+
   guides(color=FALSE)
@@ -77,42 +86,58 @@ enzymes_Q10 <- enzymes %>%
 
 
 
-  #enzymes_Q10 %>%
+ # enzymes_Q10 %>%
   #  ggplot() + geom_line(aes(x=temperature,y=Q10_ratio,group=GalleryNumber),color='grey') +
   #  facet_grid(SITE~enzyme) + ylim(c(0,20)) +
   #  geom_abline(data=hist_data,aes(slope=slope,intercept = intercept),color='blue',size=1)
 
+# We need to join up
 
 # Weight the Q10 ratio by each proportion at each sample
   weighted_Q10 <- enzymes_Q10 %>%
-    left_join(select(enzyme_proportion,GalleryNumber,PLOTID,enzyme,temperature,proportion,SITE),
-              by=c("GalleryNumber","enzyme","temperature","SITE","PLOTID")) %>%
-    group_by(SITE,GalleryNumber,temperature) %>%
-    summarize(Q10=sum(Q10_ratio*proportion,na.rm=TRUE)) %>%
-    rename(site=SITE)
+    left_join(select(enzyme_proportion,GalleryNumber,enzyme,temperature,proportion,treatment),
+              by=c("GalleryNumber","enzyme","temperature")) %>%
+    group_by(treatment,GalleryNumber,temperature) %>%
+    summarize(Q10=sum(Q10_ratio*proportion,na.rm=TRUE))
+
+#### Let's just use the weighted Q10 at 15 degrees C  (that is where the majority of the temperatures are ...)
+
+  ### Make a plot of the weighted Q10 by treatment
+  weighted_Q10 %>%
+    filter(temperature==15) %>%
+    ggplot(aes(x = treatment, y = Q10,color=as.factor(treatment))) +
+    geom_jitter(size=3) +
+    geom_boxplot(outlier.size=0,alpha=0.5) +
+    coord_cartesian(ylim = c(0, 7)) +
+    labs(x='Treatment',y = bquote(''*Q[10]*'')) +
+    theme_bw(base_size = 16, base_family = "Helvetica") +
+    theme(axis.title.x=element_text(face="bold"),axis.title.y=element_text(face="bold")) +
+    guides(color=FALSE)
 
   # Define a general fitting function
   fit_enzyme_weighted <- function(sample) {
 
-    fit_data <- sample %>% split(.$GalleryNumber) %>%
+    fit_data <- sample %>% split(.$treatment) %>%
       map(~lm(.x$Q10 ~.x$temperature)) %>%
       map(summary) %>%
       map(broom::tidy) %>%
-      bind_rows(.id="GalleryNumber")
+      bind_rows(.id="treatment")
 
     return(fit_data)
 
   }
 
-  # Now we can plot the histogram by slope and intercept
-  split_data_weighted <- weighted_Q10 %>% split(.$site) %>%
+  # Now we can plot the histogram by slope and intercept for treatment
+  split_data_weighted <- weighted_Q10 %>% split(.$treatment) %>%
     map(fit_enzyme_weighted) %>%
-    bind_rows(.id="site")
+    bind_rows(.id="treatment")
 
   # We have this almost ...
   # YAY!  Now do a histogram across all the sites
   Q10_temperature <- split_data_weighted %>%
-    group_by(site,term) %>%
+    mutate(GalleryNumber = as.numeric(GalleryNumber)) %>%
+    left_join(select(enzymes,GalleryNumber,treatment),by="GalleryNumber")
+    group_by(treatment) %>%
     summarize(median=median(estimate) #,
               # q025=quantile(estimate,0.025),
               #  q975=quantile(estimate,0.975)
@@ -126,12 +151,11 @@ use_data(Q10_temperature,overwrite = TRUE)
 
   ## Let's make a plot of this Q10 as a function of temperature
 q10plot <-  weighted_Q10 %>%
-    filter(site %in% unique(microbe_data$site)) %>%
-    ggplot() + geom_line(aes(x=temperature,y=Q10,group=GalleryNumber),color='grey') +
+    ggplot() + geom_jitter(aes(x=temperature,y=Q10,group=GalleryNumber),color='grey') +
   geom_smooth(aes(x=temperature,y=Q10),method="lm",color='red') +
-    geom_abline(data=filter(Q10_temperature,site %in% unique(microbe_data$site)),aes(slope=slope,intercept=intercept,group=site),color="blue",size=1) +
+    #geom_abline(data=filter(Q10_temperature,site %in% unique(microbe_data$site)),aes(slope=slope,intercept=intercept,group=site),color="blue",size=1) +
     ylim(c(0,15)) +
-    facet_grid(.~site) +
+    facet_grid(.~treatment) +
     labs(x ='Temperature (degrees Celsius)', y = bquote(''*Q[10]*'')) +
     theme_bw(base_size = 16, base_family = "Helvetica") +
     theme(axis.title.x=element_text(face="bold"),axis.title.y=element_text(face="bold"),strip.background = element_rect(colour="white", fill="white"))+ scale_fill_discrete(name="Site")+
