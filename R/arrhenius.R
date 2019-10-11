@@ -42,11 +42,11 @@ arrhenius <- function(param,data_in) {
   # Compute the reduction in R due to temperature
   #  3 =  k * exp(-a / (8.3144598 * 290) 5/283.15) * 0.03
   rGas <- 8.3144598   # J / K / mol
-  tempEffect <-  exp( -activationEnergy / (rGas*(data_in$T_soilC+273.15)))
+  tempEffect_revised <-  exp( -activationEnergy / (rGas*(data_in$T_soilC+273.15)))
 
 
   # Compute rSoil
-  rSoil <- data_in %>% transmute(site,PLOTID,value=baseResp*soilC*moistEffect*tempEffect)
+  rSoil <- data_in %>% transmute(site,PLOTID,value=baseResp*soilC*moistEffect*tempEffect_revised)
 
   return(rSoil)
 
