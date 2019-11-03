@@ -37,7 +37,7 @@ dead_soil <- function(param,data_in) {
   # Compute the reduction in R due to water effects
   moistEffect <- (data_in$soilWater/100)^soilRespMoistEffect
 
-    # Compute rSoil
+    # Compute rSoil - temp effect is computed outside of this function
     rSoil <- data_in %>% transmute(site,PLOTID,value=baseResp*soilC*moistEffect*tempEffect)
 
 
