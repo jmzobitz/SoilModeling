@@ -22,6 +22,7 @@ soil_evaluate <- function(param_in,model_id) {
     filter(model==model_id) %>%
     split(.$treatment)
 
+
   data_list <- flux_data %>% split(.$treatment)
 
   eval(parse(text=(paste0("model_fn<-",model_id_char))))
@@ -51,10 +52,12 @@ type_evaluate <- function(param,model_list) {
 type_list <- model_param_results %>% split(.$type)
 models <- data.frame(names = model_names) %>% split(.$names)
 
+
+
 # Compute the output
 modeled_rSoil <- type_evaluate(type_list,models) %>%
   bind_rows(.id="type")  %>%
-  left_join(select(flux_data,PLOTID,rSoil),by="PLOTID") %>%
+  left_join(select(flux_data,PLOTID,rSoil),by=c("PLOTID")) %>%
   rename(measured=rSoil)
 
 
