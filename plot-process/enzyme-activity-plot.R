@@ -21,6 +21,9 @@ enzyme_plot <- enzyme_proportion %>%
   guides(color=FALSE)
 
 
+# Report out the AOV (for methods)  (I DON'T THINK THIS IS CORRECT)
+summary(aov(proportion~treatment+enzyme,data=enzyme_proportion))
+
 # Make a plot of the proportion of enzyme activity at each reference temperature and enzyme
 fileName <- paste0('manuscript-figures/q10ProportionEnzymeSummary.png')
 ggsave(fileName,plot=enzyme_plot,width=12,height=5)

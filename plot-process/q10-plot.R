@@ -18,6 +18,11 @@ q10plot <- weighted_Q10 %>%
   theme(axis.title.x=element_text(face="bold"),axis.title.y=element_text(face="bold")) +
   guides(color=FALSE)
 
+
+# Report out the AOV (for methods)
+summary(aov(Q10~treatment,data=weighted_Q10))
+
+
 # Make a plot of the proportion of enzyme activity at each reference temperature and enzyme
 fileName <- paste0('manuscript-figures/q10EnzymeSummary.png')
 ggsave(fileName,plot=q10plot,width=7,height=5)
