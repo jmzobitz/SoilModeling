@@ -4,6 +4,12 @@ library(tidyverse)
 # modisBRDF weights
 # we are taking modisBRDF and the site lists - maybe left join by site and time, selecting out the kernel - arrgh, this will be a little tricky, but we should be ok.
 
+load('mcmc-results/modeled-rSoil-results.Rda')
+
+#modeled_rSoil %>% filter(model_id=='dead_soil') %>%
+#  ggplot() + geom_point(aes(x=modeled,y=measured,color=site))
+
+#flux_data %>% ggplot() + geom_point(aes(x=soilC,y=rSoil,color=site)) + facet_grid(.~treatment)
 
 taylor_values <- modeled_rSoil %>%
   group_by(type,names,treatment) %>%

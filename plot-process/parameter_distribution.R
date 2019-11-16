@@ -3,8 +3,9 @@
 
 library(tidyverse)
 # Files coded by model and treatment name
-in_files <- list.files('mcmc-results',full.names = TRUE)
 models_list="arrhenius|microbes|dead_soil"
+in_files <- list.files('mcmc-results',pattern=models_list,full.names = TRUE)
+
 
 
 values <- list()

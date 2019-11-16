@@ -44,9 +44,13 @@ metropolis_chain <- function(param_in,data_in,model,join_key,iterations,tuning,e
 
   # Declare a list where we will store parameter values and if we accepted or not, depending on if we burn things or not
 
+
+
   if(estimate_chain) {
     param_iterations <- list()
     accepted <- list()
+    ll_mean <- 0  # Running total for the mean likelihood
+
   } else {
     #param_iterations <- param_curr %>% select(name,value)
     accepted <- 0
@@ -157,6 +161,7 @@ metropolis_chain <- function(param_in,data_in,model,join_key,iterations,tuning,e
         param_iterations[[i]] <- param_curr %>% select(name,value)
         # Determine if we have accepted or not
         accepted[[i]] <- data.frame(value=acceptFlag)
+        ll_mean <- ll_mean+ likelihood_curr
       } else {
         accepted <- accepted + acceptFlag
       }
@@ -172,7 +177,9 @@ metropolis_chain <- function(param_in,data_in,model,join_key,iterations,tuning,e
       mutate(iteration=as.numeric(iteration))
 
     accept <- accepted %>% bind_rows()
-    out_list <- list(param_out,accept,maxLL,maxLL_iteration)
+    ll_mean <- ll_mean / sum(accept$value)
+
+    out_list <- list(param_out,accept,maxLL,maxLL_iteration,ll_mean)
   } else {  # We just want to keep the current values and the knob, reporting the acceptance
 
     param_out <- param_curr %>% select(-sampled)

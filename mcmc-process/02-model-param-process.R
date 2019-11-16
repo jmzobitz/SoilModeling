@@ -1,14 +1,17 @@
-# For a given model, compute the median and maxLL values to put into a simple form
+# For a given model, compute the median, mean, and maxLL values to put into a simple form
 
 
 library(tidyverse)
 # Files coded by model and treatment name
-in_files <- list.files('mcmc-results',full.names = TRUE)
 models_list="arrhenius|microbes|dead_soil"
+in_files <- list.files('mcmc-results',pattern=models_list,full.names = TRUE)
+
 
 
 values <- list()
 max_ll <- list()
+mean_ll <- list()   # The mean of the likelihood
+
 for (i in 1:length(in_files)) {
   load(in_files[i])
 
@@ -56,10 +59,15 @@ model_median <- values %>% bind_rows() %>%
   mutate(type="median") %>%
   select(name,value,model,treatment,type)
 
+model_mean <- values %>% bind_rows() %>%
+  group_by(model,treatment,name) %>%
+  summarize(value=mean(value)) %>%
+  mutate(type="mean") %>%
+  select(name,value,model,treatment,type)
 
 model_max_ll <- max_ll %>% bind_rows()
 
-model_param_results <- bind_rows(model_median,model_max_ll)
+model_param_results <- bind_rows(model_median,model_max_ll,model_mean)
 
 save(model_param_results,file='mcmc-results/model-parameter-results.Rda')
 

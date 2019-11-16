@@ -6,7 +6,7 @@ mcmc_mode <- mcmc_defaults
 treatment_start <- 1
 
 
-models=c("arrhenius","microbes","dead_soil")
+#models=c("dead_soil","arrhenius","microbes")
 #models=c("arrhenius","microbes")
 models=c("microbes")
 #models=c("dead_soil")
