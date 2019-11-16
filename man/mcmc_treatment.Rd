@@ -17,5 +17,5 @@ mcmc_treatment(model_id, mcmc_mode, treatment_start = 1)
 Nothing - this just saves a bunch of files
 }
 \description{
-\code{mcmc_treatment} does the heavy lifting for a given model, splitting the data into treatments, runs and saves an MCMC parameter estimate for a given mode.
+\code{mcmc_treatment} does the heavy lifting for a given model, splitting the data into treatments, runs and saves an MCMC parameter estimate for a given mode.  This runs it at each site
 }

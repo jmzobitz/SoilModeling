@@ -1,7 +1,7 @@
 
 #' Does a MCMC estimate across different data treatements for a given model
 #'
-#' \code{mcmc_treatment} does the heavy lifting for a given model, splitting the data into treatments, runs and saves an MCMC parameter estimate for a given mode.
+#' \code{mcmc_treatment} does the heavy lifting for a given model, splitting the data into treatments, runs and saves an MCMC parameter estimate for a given mode.  This runs it at each site
 #'
 #' @param model_id The name of the model we are using.  Must be the same name as
 #' @param mcmc_mode The type of MCMC estimate we want to run
@@ -18,9 +18,12 @@
 
 mcmc_treatment <- function(model_id,mcmc_mode,treatment_start=1) {
   # Spilt off the flux data by treatment
-  flux_data_treatment <- flux_data %>%
+  flux_data_modified <- flux_data %>%
+    mutate(treatment_site = str_c(site,treatment,sep="-"))
+
+  flux_data_treatment <- flux_data_modified %>%
     filter(treatment>=treatment_start) %>%
-    split(.$treatment)  # We've split out the data by treatment
+    split(.$treatment_site)  # We've split out the data by treatment
 
   param_file_name <- paste0('param-defaults/',model_id,'-param.csv')
 
@@ -29,7 +32,7 @@ mcmc_treatment <- function(model_id,mcmc_mode,treatment_start=1) {
   log_files <-  list(
     file_loc = "mcmc-log-files/",
     id = paste0(model_id,"-"),
-    treatment = unique(flux_data$treatment),
+    treatment = unique(flux_data_modified$treatment_site),
     ending=".out"
   ) %>%
     cross_df() %>%
@@ -41,7 +44,7 @@ mcmc_treatment <- function(model_id,mcmc_mode,treatment_start=1) {
   results_files <-  list(
     file_loc = "mcmc-results/",
     id = paste0(model_id,"-"),
-    treatment = unique(flux_data$treatment),
+    treatment = unique(flux_data_modified$treatment_site),
     ending=".Rda"
   ) %>%
     cross_df() %>%
@@ -56,7 +59,7 @@ mcmc_treatment <- function(model_id,mcmc_mode,treatment_start=1) {
   pmap(list(x=log_files,y=results_files,z=flux_data_treatment),
        .f=function(x,y,z){
          run_MCMC(param_file_name,model_fn,z,"PLOTID",y$file_name,x$file_name,mcmc_mode)
-         print(paste0("Ending the treatment run for: ", z$treatment[[1]]))
+         print(paste0("Ending the run for: ", z$treatment_site[[1]]))
          })
 
 
