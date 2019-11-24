@@ -12,7 +12,7 @@ load('mcmc-results/modeled-rSoil-results.Rda')
 #flux_data %>% ggplot() + geom_point(aes(x=soilC,y=rSoil,color=site)) + facet_grid(.~treatment)
 
 taylor_values <- modeled_rSoil %>%
-  group_by(type,names,treatment) %>%
+  group_by(type,model,site,treatment) %>%
   summarize(
   sd_meas = 1,
   sd_model = sd(modeled) / sd(measured),
@@ -23,7 +23,10 @@ taylor_values <- modeled_rSoil %>%
 )
 
 
+# load up the results from the empirical model
+load('mcmc-results/empirical-taylor-results.Rda')
 
+taylor_values <- rbind(taylor_values,taylor_values_empirical)
 # normalize the results, see Taylor 2001
 # E = E'/sigma_meas
 # sigma_model = sigma_model/sigma_meas
@@ -33,8 +36,8 @@ taylor_values <- modeled_rSoil %>%
 t_plot <- taylor_plot()
 
 curr_plot <- t_plot +
-  geom_point(data=taylor_values,aes(x=x_coord,y=y_coord,color=names,shape=type),size=2) +
-  facet_grid(.~treatment) +
+  geom_point(data=taylor_values,aes(x=x_coord,y=y_coord,color=model,shape=type),size=2) +
+  facet_grid(site~treatment) +
   labs(x="",y=expression(italic("\u03C3")[model]),color="Model",shape="Estimate type") +
   theme_bw() +
   theme(legend.position = "bottom",

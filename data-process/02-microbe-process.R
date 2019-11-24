@@ -18,8 +18,8 @@ microbe_data <- read_csv(inputMicrobeFileLocation) %>%
   mutate(microbeC = Biomass_C_final*100*1e-6,  # Convert the soil Carbon and soil microbes from ug C to g soil
          soilC = DOC_Final*100e-6) %>% # Assume we have 100 g of soil in the measurement. 1 ug = 1e-6 g (in the notes High park)
   rename(site=SITE,soilWater = SoilMoisture_pcent) %>%
-  select(Date,site,PLOTID,microbeC,soilC,soilWater) %>%
-  group_by(site,PLOTID) %>%
-  summarize(microbeC = mean(microbeC),soilC = mean(soilC),soilWater = mean(soilWater)) %>% ungroup()
+  select(Date,site,PLOTID,microbeC,soilC,soilWater) # %>%
+ # group_by(site,PLOTID) %>%
+#  summarize(microbeC = mean(microbeC),soilC = mean(soilC),soilWater = mean(soilWater)) %>% ungroup()
 
 use_data(microbe_data,overwrite = TRUE)

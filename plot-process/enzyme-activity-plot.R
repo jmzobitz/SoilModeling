@@ -6,15 +6,16 @@ library(SoilModeling)
 ### Modified: 3/17/19
 ### Purpose: plot enzyme activity data
 
-
+site_names <- c("UMC","SPR","LSP")
 
 enzyme_plot <- enzyme_proportion %>%
   filter(temperature ==15) %>%
-  ggplot(aes(x = treatment, y = proportion,color=as.factor(treatment))) +
+  filter(SITE %in% site_names) %>%
+  ggplot(aes(x = enzyme, y = proportion,color=as.factor(enzyme))) +
   geom_jitter(size=1) +
   geom_boxplot(outlier.size=0,alpha=0.5) +
-  coord_cartesian(ylim = c(0, 1)) +
-  facet_grid(.~enzyme) +
+  #coord_cartesian(ylim = c(0, 1)) +
+  facet_grid(SITE~treatment) +
   labs(x='Treatment',y = "Proportional activity at 15 \u00B0C") +
   theme_bw(base_size = 16, base_family = "Helvetica") +
   theme(axis.title.x=element_text(face="bold"),axis.title.y=element_text(face="bold"),strip.background = element_rect(colour="white", fill="white"))+ scale_fill_discrete(name="Site")+
